@@ -1,0 +1,30 @@
+{
+  "name": "rukus-signal",
+  "version": "1.0.0",
+  "description": "Signal management for rukus apps, built with riot.Observable",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "./node_modules/babel/bin/babel.js index_src.js -o index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iflix-letsplay/rukus-signal.git"
+  },
+  "keywords": [
+    "rukus",
+    "signal",
+    "event",
+    "riot",
+    "observable"
+  ],
+  "author": "iflix team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iflix-letsplay/rukus-signal/issues"
+  },
+  "homepage": "https://github.com/iflix-letsplay/rukus-signal#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
