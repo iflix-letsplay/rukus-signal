@@ -117,7 +117,7 @@ function RukusSignal(RukusApp, riot) {
                     let [path, sig] = sigPath.split(':');
                     let obs = RukusApp.__find(path);
                     if(!obs) return console.error(`cannot find ${path} to bind`);
-                    obs.off(sig, signals[sigPath]);
+                    obs.on(sig, signals[sigPath]);
                 }
             });
         };
