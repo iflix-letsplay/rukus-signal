@@ -134,14 +134,14 @@ function RukusSignal(RukusApp, riot) {
         // Invoke something defined with this.invokes(), takes:
         //
         // localSignalName, optional data
-        obj.invoke = (sigName, data) => {
+        obj.invoke = (sigName, ...data) => {
             let sigPath = obj.__invokes[sigName];
             if(!sigPath) console.error(`${sigName} not declared with this.invokes()`);
             let [path, sig] = sigPath.split(':');
             let obs = RukusApp.__find(path);
             if(!obs) return console.error(`cannot find ${path} to invoke`);
             console.log('triggering', sig, 'on ', obs);
-            obs.trigger(sig, data);
+            obs.trigger(sig, ...data);
         };
     };
 
