@@ -1,6 +1,6 @@
 {
   "name": "rukus-signal",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Signal management for rukus apps, built with riot.Observable",
   "main": "index.js",
   "scripts": {
