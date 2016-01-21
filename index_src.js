@@ -36,7 +36,7 @@ function RukusSignal(RukusApp, riot) {
         if(obj.root) {
             // we're a view component
             obj.__sigKind = 'view';
-            obj.__sigName = obj.root.tagName || 
+            obj.__sigName = obj.root.tagName ||
                 'unkownComponent.'+ (++signalBox.counter);
             signalBox.views[obj.__sigName] = obj;
 
@@ -96,12 +96,15 @@ function RukusSignal(RukusApp, riot) {
         // { signal : 'name',
         //   desc : 'sig description',
         //   data : 'data accepted description',
-        //   func : function to call
+        //   func : function to call OR string name of function to call
         // }
         obj.accepts = (...signals) => {
             signals.forEach(function(sig) {
                 obj.__accepts[sig.signal] = sig;
-                obj.on(sig.signal, sig.func);
+                var func = typeof sig.func == 'function' ? sig.func : function() {
+                  obj[sig.func].apply(obj, arguments);
+                };
+                obj.on(sig.signal, func);
             });
         };
 
@@ -130,7 +133,7 @@ function RukusSignal(RukusApp, riot) {
                 obj.__invokes[localName] = signals[localName];
             });
         };
- 
+
         // Invoke something defined with this.invokes(), takes:
         //
         // localSignalName, optional data
