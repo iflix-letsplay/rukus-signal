@@ -1,5 +1,8 @@
-module.exports = RukusSignal;
+import logger from 'debug'
 
+const rukusLogger = logger('loggers:rukus')
+
+module.exports = RukusSignal;
 
 function dots(obj) {
     /* takes an object and returns a getter which takes a dot path, ie:
@@ -140,7 +143,7 @@ function RukusSignal(RukusApp, riot) {
             let [path, sig] = sigPath.split(':');
             let obs = RukusApp.__find(path);
             if(!obs) return console.error(`cannot find ${path} to invoke`);
-            console.log('triggering', sig, 'on ', obs);
+            rukusLogger('triggering', sig, 'on ', obs);
             obs.trigger(sig, ...data);
         };
     };
